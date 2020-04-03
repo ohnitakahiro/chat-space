@@ -5,6 +5,7 @@
 @import "font-awesome";
 @import "modules/user";
 @import "modules/flash";
+@import "modules/group";
 
 
 html{
@@ -65,12 +66,13 @@ body{
     &__Name{
       font-size: 15px;
       margin-bottom: 5px;
-      cursor: pointer;
+      color: $palette-trueWhite;
+      text-decoration: none;
     }
     &__Message{
       font-size: 11px;
       margin-bottom: 40px;
-      cursor: pointer;
+      color: $palette-trueWhite;
     }
   }
 }

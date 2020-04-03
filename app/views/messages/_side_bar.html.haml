@@ -4,13 +4,13 @@
       = current_user.name
       %p.LeftTopItems__Info__UserName
       .LeftTopItems__Info__Icon
-        = link_to "/users/#{current_user.id}/edit" do
+        = link_to new_group_path do
           %i.far.fa-edit
         = link_to "/users/#{current_user.id}/edit" do
           %i.fa.fa-cog
   .Group-List
-    %ul
-      %li.Group-List__Name techcamp
-      %p.Group-List__Message まだメッセージがありません
-      %li.Group-List__Name techcamp
-      %p.Group-List__Message まだメッセージがありません
+    - current_user.groups.each do |group|
+      = link_to '#',class:"Group-List__Name" do
+        .Group-List__Name
+          = group.name
+        .Group-List__Message まだメッセージがありません
