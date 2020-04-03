@@ -1,0 +1,23 @@
+.Main-Chat
+  .RightTopItems
+    .RightTopItems__GroupInfo
+      .RightTopItems__GroupInfo__Name test
+      .RightTopItems__GroupInfo__Member Member:ooni
+    .RightTopItems__Edit Edit
+  %ul.ChatRoom
+    %li.ChatRoom__Info
+      .ChatRoom__Info__UserName ooni
+      .ChatRoom__Info__Timestamp 2020/04/02(Wed) 22:10:01
+    %p.ChatRoom__Message おはよう！
+    %li.ChatRoom__Info
+      .ChatRoom__Info__UserName ooni
+      .ChatRoom__Info__Timestamp 2020/04/02(Wed) 22:10:01
+    %p.ChatRoom__Message おはよう！
+
+  .BottomItems
+    .BottomItems__MessageForm
+      %input.BottomItems__MessageForm__input{:placeholder => "type a message"}/
+      %label{class: "BottomItems__MessageForm__image"}
+        = icon('far', 'image')
+        %input{type: "file"}
+    .BottomItems__Send Send
