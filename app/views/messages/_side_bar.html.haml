@@ -1,11 +1,13 @@
 .SideBar
   .LeftTopItems
     .LeftTopItems__Info
-      %p.LeftTopItems__Info__UserName ooni
+      = current_user.name
+      %p.LeftTopItems__Info__UserName
       .LeftTopItems__Info__Icon
-        - link_to "#"
-        %i.far.fa-edit
-        %i.fa.fa-cog
+        = link_to "/users/#{current_user.id}/edit" do
+          %i.far.fa-edit
+        = link_to "/users/#{current_user.id}/edit" do
+          %i.fa.fa-cog
   .Group-List
     %ul
       %li.Group-List__Name techcamp

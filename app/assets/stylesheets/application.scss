@@ -1,8 +1,11 @@
 @import "reset";
+@import "config/colors";
 @import "modules/messages";
-@import "color";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "modules/user";
+@import "modules/flash";
+
 
 html{
   height:100%;
@@ -40,11 +43,14 @@ body{
         align-items: center;
         justify-content: flex-end;
         .far.fa-edit{
-          padding-right: 5px;
+          margin-right: 5px;
           cursor: pointer;
+          color: $font-color-white;
+
         }
         .fa.fa-cog{
           cursor: pointer;
+          color: $font-color-white;
 
         }
       }
