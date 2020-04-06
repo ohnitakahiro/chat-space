@@ -10,7 +10,8 @@
           %i.fa.fa-cog
   .Group-List
     - current_user.groups.each do |group|
-      = link_to '#',class:"Group-List__Name" do
+      = link_to group_messages_path(group),class:"Group-List__Name" do
         .Group-List__Name
           = group.name
-        .Group-List__Message まだメッセージがありません
+        .Group-List__Message
+          = group.show_last_message

@@ -7,7 +7,9 @@
 @import "modules/flash";
 @import "modules/group";
 
-
+.hidden{
+  display: none;
+}
 html{
   height:100%;
 }
@@ -94,13 +96,22 @@ body{
         font-size: 20px;
         padding: 35px 0 15px 0;
       }
-      &__Member{
-        color: #999999;
-        font-size: 12px;
-  
+      &__Mask{
+        display: flex;
+        &__Member{
+          color: #999999;
+          font-size: 12px;
+        }
+        &__Members{
+          color: #999999;
+          font-size: 12px;
+        }
       }
     }
 
+    a{
+      text-decoration: none;
+    }
     &__Edit{
       color: $palette-lightBlue;
       font-size: 16px;
@@ -133,6 +144,9 @@ body{
       color: #434a54;
       font-size: 14px;
       padding-bottom: 46px;
+      &__Image{
+
+      }
 
     }
   }
@@ -142,40 +156,39 @@ body{
     display: flex;
     align-items: center;
     padding: 0 40px;
-    &__MessageForm{
-      background-color: $BottomItems__MessageForm-background;
+    .form{
       height: 50px;
       vertical-align: middle;
-      width: calc(100% - 100px);
-      position: relative;
-      
-      &__input{
-        width: 100%;
-        height: 100%;
+      width:100%;
+      form{
+        display: flex;
+        justify-content: space-between;
+      }
+      &__message{
         border: none;
         padding: 0 10px;
+        width: 100%;
       }
-      &__image{
-        font-size: 1.6rem;
-        position: absolute;
-        top: 5px;
-        right: 10px;
-        cursor: pointer;
-
-        input{
-          display: none;
+      &__mask{
+        position: relative;
+        &__image{
+          font-size: 1.6rem;
+          position: absolute;
+          top: 5px;
+          right: 10px;
+          cursor: pointer;
         }
       }
-    }
-    &__Send{
-      width: 100px;
-      height: 50px;
-      background-color: $palette-lightBlue;
-      color: $font-color-white;
-      text-align: center;
-      line-height: 50px;
-      margin-left: 15px;
-
+      &__submit{
+        width: 100px;
+        height: 50px;
+        background-color: $palette-lightBlue;
+        color: $font-color-white;
+        text-align: center;
+        line-height: 50px;
+        margin-left: 15px;
+      }
     }
   }
 }
+

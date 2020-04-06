@@ -1,23 +1,26 @@
 .Main-Chat
   .RightTopItems
     .RightTopItems__GroupInfo
-      .RightTopItems__GroupInfo__Name test
-      .RightTopItems__GroupInfo__Member Member:ooni
-    .RightTopItems__Edit Edit
-  %ul.ChatRoom
-    %li.ChatRoom__Info
-      .ChatRoom__Info__UserName ooni
-      .ChatRoom__Info__Timestamp 2020/04/02(Wed) 22:10:01
-    %p.ChatRoom__Message おはよう！
-    %li.ChatRoom__Info
-      .ChatRoom__Info__UserName ooni
-      .ChatRoom__Info__Timestamp 2020/04/02(Wed) 22:10:01
-    %p.ChatRoom__Message おはよう！
+      .RightTopItems__GroupInfo__Name
+      = @group.name
+      .RightTopItems__GroupInfo__Mask
+        .RightTopItems__GroupInfo__Mask__Member Member :  
+        .RightTopItems__GroupInfo__Mask__Members
+          - @group.group_users.each do |group_user| 
+            = group_user.user.name
+    = link_to "/groups/#{@group.id}/edit" do
+      .RightTopItems__Edit Edit
 
+  .ChatRoom
+    - @messages.each do |message|
+      = render partial: "messages", locals: { message: message }
+      
   .BottomItems
-    .BottomItems__MessageForm
-      %input.BottomItems__MessageForm__input{:placeholder => "type a message"}/
-      %label{class: "BottomItems__MessageForm__image"}
-        = icon('far', 'image')
-        %input{type: "file"}
-    .BottomItems__Send Send
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :body, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = icon('far', 'image', class: 'icon')
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
