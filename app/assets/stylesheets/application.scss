@@ -126,6 +126,7 @@ body{
     height: calc(100% - 190px);
     padding-top: 35px;
     padding-left: 40px;
+    overflow: scroll;
     &__Info{
       padding-bottom: 12px;
       display: flex;
