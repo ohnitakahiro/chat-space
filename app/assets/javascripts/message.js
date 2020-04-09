@@ -79,9 +79,7 @@ $(function(){
       contentType: false
     })
     .done(function(data){
-      console.log(data);
       var html = buildHTML(data);
-      console.log(html);
       $('.ChatRoom').append(html);
       $('form')[0].reset();
       $('.ChatRoom').animate({ scrollTop: $('.ChatRoom')[0].scrollHeight});      
