@@ -66,6 +66,7 @@ gem 'haml-rails'
 gem 'font-awesome-sass'
 gem 'devise'
 gem 'pry-rails'
+gem 'fog-aws'
 gem 'carrierwave'
 gem 'mini_magick'
 group :production do
