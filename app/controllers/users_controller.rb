@@ -34,7 +34,6 @@ class UsersController < ApplicationController
         excluded_users << user_id.to_i
       end
     end
-
     return excluded_users
   end
 
