@@ -1,5 +1,7 @@
 $(function() {
+
   function addUser(user) {
+
     let html = `
       <div class="chat-group-user clearfix">
         <p class="chat-group-user__name">${user.name}</p>
@@ -31,31 +33,44 @@ $(function() {
   }
   $("#user-search-field").on("keyup", function() {
     let input = $("#user-search-field").val();
-    $.ajax({
-      type: "GET",
-      url: "/users",
-      data: { keyword: input },
-      dataType: "json"
-    })
-      .done(function(users) {
-        $("#user-search-result").empty();
+    let selected_users = [];
+    selected_users.length = 0;
 
-        if (users.length !== 0) {
-          users.forEach(function(user) {
-            addUser(user);
-          });
-        } else if (input.length == 0) {
-          return false;
-        } else {
-          addNoUser();
-        }
+    $(".chat-group-user").each(function(){
+      selected_users.push($(this).attr("id"));
+    });
+
+    if(input.length == 0){
+      $("#user-search-result").empty();
+    } else{
+      $.ajax({
+        type: "GET",
+        url: "/users",
+        data: { keyword: input,
+                selected_users: selected_users},
+        dataType: "json"
       })
-      .fail(function() {
-        alert("通信エラーです。ユーザーが表示できません。");
-      });
+        .done(function(users) {
+          $("#user-search-result").empty();
+          if (users.length !== 0) {
+            users.forEach(function(user) {
+              addUser(user);
+            });
+          } else if (input.length == 0) {
+            return false;
+          } else {
+            addNoUser();
+          }
+        })
+        .fail(function() {
+          alert("通信エラーです。ユーザーが表示できません。");
+        });
+    }
+
+
   });
   $(document).on("click", ".chat-group-user__btn--add", function() {
-    console.log
+    
     const userName = $(this).attr("data-user-name");
     const userId = $(this).attr("data-user-id");
     $(this)
